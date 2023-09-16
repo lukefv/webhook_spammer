@@ -1,71 +1,187 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap");
 
-* {
-    text-align: center;
-    color: #838383c9;
-    font-family: "Arial Black", Gadget, sans-serif"
-    
+$background: #282a36;
+$color-primary: #bd93f9;
+$color-secondary: #f8f8f2;
+
+:root {
+  font-family: "Kanit", sans-serif;
+
+  background-color: $background;
+  color: $color-primary;
+
+  user-select: none;
+  overflow: hidden;
+
+  // add fade in animation to body
+
+  body {
+    animation: fadeIn 1s;
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  }
 }
 
-body {
-    background: url("https://cdn.discordapp.com/attachments/1054046550214594705/1152555517240164392/Screenshot-2021-09-13-134730.png");
+@mixin neon($intensity, $color) {
+  filter: drop-shadow(0 0 $intensity $color);
 }
 
-#container {
+.container {
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
 
-    background-image:url('');
+  p {
+    width: 95%;
+    word-wrap: break-word;
+
+    @include neon(10px, $color-primary);
+
+    font-size: 2rem;
+    font-weight: 500;
+
+    transition: all 0.5s ease;
+
+    &:hover {
+      color: $color-secondary;
+      @include neon(20px, $color-secondary);
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+  }
+}
+
+.generate {
+  // center
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: $color-primary;
+
+    font-family: "Kanit", sans-serif;
+    font-size: 1.75rem;
+    font-weight: 500;
+
+    margin: 0.3rem;
+    padding: 0.3rem;
+
+    @include neon(10px, $color-primary);
+
+    transition: all 0.5s ease;
+
+    &:hover {
+      color: $color-secondary;
+      @include neon(20px, $color-secondary);
+      cursor: pointer;
+    }
+  }
+
+  input {
+    background-color: transparent;
+    outline: none;
+    color: $color-primary;
+
+    font-family: "Kanit", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+
+    margin: 0.3rem;
+    padding: 0.3rem;
+
+    @include neon(10px, $color-primary);
+
+    transition: all 0.5s ease;
+
+    &::placeholder {
+      color: rgba($color-primary, 0.5);
+      opacity: 0.85;
+    }
+
+    &:hover {
+      color: $color-secondary;
+      @include neon(20px, $color-secondary);
+      cursor: pointer;
+    }
+  }
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: $color-secondary;
+
+  transition: all 0.5s ease;
+
+  a {
+    @include neon(5px, $color-primary);
+
+    color: $color-primary;
+    text-decoration: none;
+
+    transition: all 0.5s ease;
+
+    &:hover {
+      color: $color-secondary;
+      @include neon(20px, $color-secondary);
+    }
+  }
+
+  &:hover {
+    transform: scale(1.05) skewY(-1deg);
+  }
+}
+
+.github {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  font-size: 1rem;
+  color: $color-secondary;
+
+  transition: all 0.5s ease;
+
+  svg {
+    @include neon(5px, $color-primary);
+    height: 2rem;
+    width: 2rem;
+    fill: $color-primary;
+
+    transition: all 0.5s ease;
+
+    &:hover {
+      fill: $color-secondary;
+      @include neon(20px, $color-secondary);
+      transform: scale(1.05) skewY(-1deg);
+    }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
     opacity: 1;
- 
-}
-
-
-#header {
-    text-align: center;
-    margin-top: 47px;
-    margin: auto;
-    font-size: 39px;
-    color: rgb(255, 255, 255)
-
-}
-
-
-.center-align {
-    text-align: center;
-}
-
-p {
-    font-family: "Arial Black, Gadget, sans-serif";
-    font-size: 27px;
-}
-
-a, a:visited {
-    color: rgb(255, 255, 255)
-}
-
-#link, #username, #content, #avatar {
-    font-size: 25px;
-    background-color: #000000;
-    width: 75%;
-    padding: 20px;
-    border: 2px solid #838383c9;
-}
-
-#btn {
-    width: 35%;
-    font-size: 25px;
-    color: #838383c9;
-    margin-top: 25px;
-    padding: 17px;
-    background-color: #000000;
-    border: 2px solid #838383c9;
-}
-
-#btn:hover { 
-    background-color: #ffffff;
-}
-
-#log {
-    text-align: center;
-    width: 5%;
-    background-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
+  }
 }
