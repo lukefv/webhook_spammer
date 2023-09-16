@@ -6,7 +6,7 @@ $(function () {
         var content = $('#content').val();
         var avatar = $('#avatar').val();
         if (link == null || link == "", content == null || content == "") {
-            alert("merci de remplir toutes les options");
+            alert("please enter the info");
             return false;
         }
 
